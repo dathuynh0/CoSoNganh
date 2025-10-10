@@ -8,7 +8,7 @@ import logo from "../assets/logo.png";
 
 import { useState } from "react";
 import ResponsiveMenu from "./ResponsiveMenu.jsx";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const NavBar = () => {
   const [check, setCheck] = useState(false);
@@ -20,7 +20,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center m-2 font-[Poppins]">
+      <nav className="flex justify-between items-center p-2 font-[Poppins]">
         {/* logo */}
         <a href="/">
           <img className="size-16 rounded-full" src={logo} alt="" />
@@ -28,9 +28,11 @@ const NavBar = () => {
 
         {/* item */}
         <div className="hidden md:block">
-          <ul className="flex items-center justify-center gap-x-8 text-lg text-white uppercase">
+          <ul className="flex items-center justify-center gap-x-8 text-lg text-blue-500 uppercase">
             <li>
-              <Link to="/">Trang chủ</Link>
+              <NavLink className="" to="/">
+                Trang chủ
+              </NavLink>
             </li>
             <li
               className="relative group"
@@ -48,46 +50,46 @@ const NavBar = () => {
 
               {/* Dropdown menu */}
               <div
-                className={`absolute top-8 left-0 bg-amber-500 rounded-md shadow-md overflow-hidden transition-all duration-200 ${
+                className={`absolute top-8 left-0 bg-white rounded-md shadow-md overflow-hidden transition-all duration-200 ${
                   dropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
                 <ul className="py-2 min-w-[200px]">
                   <li className="hover:bg-gray-700 transition-colors">
-                    <Link
+                    <NavLink
                       to="/thuonghieu/bitis"
                       className="block px-4 py-2 whitespace-nowrap"
                     >
                       Biti's
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="hover:bg-gray-700 transition-colors">
-                    <Link
+                    <NavLink
                       to="/thuonghieu/yame"
                       className="block px-4 py-2 whitespace-nowrap"
                     >
                       Yame
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="hover:bg-gray-700 transition-colors">
-                    <Link
+                    <NavLink
                       to="/thuonghieu/nike"
                       className="block px-4 py-2 whitespace-nowrap"
                     >
                       Nike
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </div>
             </li>
             <li>
-              <Link to="/donam">Đồ nam</Link>
+              <NavLink to="/donam">Đồ nam</NavLink>
             </li>
             <li>
-              <Link to="/donu">Đồ nữ</Link>
+              <NavLink to="/donu">Đồ nữ</NavLink>
             </li>
             <li>
-              <Link to="/phukien">Phụ kiện</Link>
+              <NavLink to="/phukien">Phụ kiện</NavLink>
             </li>
           </ul>
         </div>

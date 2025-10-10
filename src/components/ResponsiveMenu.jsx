@@ -14,8 +14,8 @@ const ResponsiveMenu = ({ open }) => {
             initial={{ opacity: 0, x: -150 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.4 }}
-            className="absolute top-20 left-0 w-screen h-screen z-20"
+            transition={{ duration: 0.3 }}
+            className="absolute top-15 left-0 w-screen h-screen z-20"
           >
             <div className="text-xl uppercase font-semibold bg-amber-600 text-white py-10 m-6 rounded-2xl">
               <ul className="flex flex-col justify-center items-center gap-10">

@@ -1,22 +1,66 @@
-export const dataNav = [
+export const data = [
   {
     id: 1,
-    title: "Trang chủ",
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh phù hợp mặt vào trời lạnh",
+    price: "299999đ",
   },
   {
     id: 2,
-    title: "Thương hiệu",
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh",
+    price: "299999đ",
   },
   {
     id: 3,
-    title: "Đồ nam",
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh",
+    price: "299999đ",
   },
   {
     id: 4,
-    title: "Đồ nữ",
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh",
+    price: "299999đ",
   },
   {
     id: 5,
-    title: "Phụ kiện",
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh",
+    price: "299999đ",
+  },
+  {
+    id: 6,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh",
+    price: "299999đ",
+  },
+  {
+    id: 7,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh",
+    price: "299999đ",
+  },
+  {
+    id: 8,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",
+    imageWhenHover:
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+    title: "Áo thun mát lạnh",
+    price: "299999đ",
   },
 ];

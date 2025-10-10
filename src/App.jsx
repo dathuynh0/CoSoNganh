@@ -1,15 +1,21 @@
-import { Routes, Route } from "react-router";
-import HomePage from "./pages/HomePage";
-import DoNam from "./pages/DoNam";
+import { Outlet } from "react-router";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/donam" element={<DoNam />} />
-      </Routes>
-    </>
+    <div className="h-[10000px] ">
+      <div className="bg-white flex justify-center sticky top-0 right-0 left-0 z-50">
+        <div className="w-full md:w-4/5">
+          <NavBar />
+        </div>
+      </div>
+
+      <div className="mt-6 md:w-4/5 mx-auto font-[Poppins]">
+        <div>
+          <Outlet />
+        </div>
+      </div>
+    </div>
   );
 }
 
