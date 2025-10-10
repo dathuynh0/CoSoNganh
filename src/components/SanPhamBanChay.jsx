@@ -29,7 +29,7 @@ const SanPhamBanChay = () => {
   const handlePrev = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: -600,
+        left: -300,
       });
     }
   };
@@ -38,7 +38,7 @@ const SanPhamBanChay = () => {
   const handleNext = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: 600,
+        left: 300,
       });
     }
   };
@@ -47,11 +47,11 @@ const SanPhamBanChay = () => {
     <>
       {/* Product List Section */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h2 className="text-center text-3xl font-medium mb-3">
+        <h2 className="mt-6 text-center text-5xl font-light mb-3">
           Sản phẩm bán chạy
         </h2>
 
-        <div className="flex items-center gap-4">
+        <div className="mt-6 flex items-center gap-4">
           {/* previous button */}
           <Button
             variant="outline"

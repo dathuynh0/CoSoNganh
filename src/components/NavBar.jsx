@@ -1,6 +1,7 @@
 import {
   ChevronDown,
   CircleUserRound,
+  HandPlatter,
   ShoppingCartIcon,
   TextAlignJustify,
 } from "lucide-react";
@@ -9,18 +10,24 @@ import logo from "../assets/logo.png";
 import { useState } from "react";
 import ResponsiveMenu from "./ResponsiveMenu.jsx";
 import { Link, NavLink } from "react-router";
+import "./mystyle.css";
+import Login from "./Login";
 
 const NavBar = () => {
   const [check, setCheck] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [checkLogin, setCheckLogin] = useState(false);
 
   const openMenu = () => {
     setCheck(!check);
   };
 
+  const handleCheckLogin = () => {
+    setCheckLogin(!checkLogin);
+  };
   return (
     <>
-      <nav className="flex justify-between items-center p-2 font-[Poppins]">
+      <nav className="flex justify-between items-center p-2 font-[Sora]">
         {/* logo */}
         <a href="/">
           <img className="size-16 rounded-full" src={logo} alt="" />
@@ -28,7 +35,7 @@ const NavBar = () => {
 
         {/* item */}
         <div className="hidden md:block">
-          <ul className="flex items-center justify-center gap-x-8 text-lg text-blue-500 uppercase">
+          <ul className="flex items-center justify-center gap-x-8 text-lg text-blue-700 uppercase">
             <li>
               <NavLink className="" to="/">
                 Trang chủ
@@ -55,15 +62,15 @@ const NavBar = () => {
                 }`}
               >
                 <ul className="py-2 min-w-[200px]">
-                  <li className="hover:bg-gray-700 transition-colors">
+                  <li className="hover:bg-gray-300 transition-colors">
                     <NavLink
                       to="/thuonghieu/bitis"
-                      className="block px-4 py-2 whitespace-nowrap"
+                      className="block px-4 py-2 whitespace-nowrap active"
                     >
                       Biti's
                     </NavLink>
                   </li>
-                  <li className="hover:bg-gray-700 transition-colors">
+                  <li className="hover:bg-gray-300 transition-colors">
                     <NavLink
                       to="/thuonghieu/yame"
                       className="block px-4 py-2 whitespace-nowrap"
@@ -71,7 +78,7 @@ const NavBar = () => {
                       Yame
                     </NavLink>
                   </li>
-                  <li className="hover:bg-gray-700 transition-colors">
+                  <li className="hover:bg-gray-300 transition-colors">
                     <NavLink
                       to="/thuonghieu/nike"
                       className="block px-4 py-2 whitespace-nowrap"
@@ -96,7 +103,11 @@ const NavBar = () => {
 
         {/* icon */}
         <div className="flex items-center gap-x-3">
-          <CircleUserRound className="size-8 cursor-pointer" />
+          <CircleUserRound
+            onClick={handleCheckLogin}
+            className="relative size-8 cursor-pointer"
+          />
+
           <ShoppingCartIcon className="size-8 cursor-pointer" />
           <TextAlignJustify
             onClick={openMenu}
@@ -104,8 +115,12 @@ const NavBar = () => {
           />
         </div>
       </nav>
+
+      {/* login */}
+      <Login check={checkLogin} />
       {/* responsive */}
       <ResponsiveMenu open={check} />
+      {}
     </>
   );
 };
