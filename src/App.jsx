@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <div>
           <Outlet />
         </div>
+      </div>
+      <div className="bg-sky-200 text-white flex justify-center font-[Sora]">
+        <Footer />
       </div>
     </div>
   );

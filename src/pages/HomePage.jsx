@@ -6,16 +6,16 @@
 // import { Button } from "./ui/button";
 // import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import SanPhamBanChay from "./SanPhamBanChay.jsx";
-import Banner from "./Banner.jsx";
-import DoNamDoNu from "./DoNamDoNu.jsx";
+import BodyHomePage from "../components/BodyHomePage";
+import Banner from "../components/Banner";
+import DoNamDoNu from "../components/DoNamDoNu";
 
 const HomePage = () => {
   return (
     <>
       <Banner />
       <DoNamDoNu />
-      <SanPhamBanChay />
+      <BodyHomePage />
     </>
   );
 };

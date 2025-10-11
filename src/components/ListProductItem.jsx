@@ -3,20 +3,18 @@ import ProDuctItem from "./ProductItems";
 import { Button } from "./ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { data } from "../lib/data.js";
-
-const SanPhamBanChay = () => {
-  const scrollContainerRef = useRef(null);
+const ListProductItem = ({ data, title }) => {
+  const scrollRef = useRef();
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   // kiểm tra vị trí scroll
   const checkScrollPosition = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } =
-        scrollContainerRef.current;
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
       setCanScrollLeft(scrollLeft > 5);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5);
+      console.log(scrollLeft, scrollWidth, clientWidth);
     }
   };
 
@@ -27,8 +25,8 @@ const SanPhamBanChay = () => {
 
   // Hàm scroll sang trái
   const handlePrev = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
         left: -300,
       });
     }
@@ -36,8 +34,8 @@ const SanPhamBanChay = () => {
 
   // Hàm scroll sang phải
   const handleNext = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
         left: 300,
       });
     }
@@ -46,28 +44,28 @@ const SanPhamBanChay = () => {
   return (
     <>
       {/* Product List Section */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <h2 className="mt-6 text-center text-5xl font-light mb-3">
-          Sản phẩm bán chạy
-        </h2>
+      <div className="max-w-full mx-auto px-4 py-8 mb-10">
+        {title && (
+          <h2 className="mt-6 text-center text-5xl font-light mb-6">{title}</h2>
+        )}
 
-        <div className="mt-6 flex items-center gap-4">
+        <div className="flex items-center gap-4">
           {/* previous button */}
           <Button
             variant="outline"
             size="icon"
             onClick={handlePrev}
             disabled={!canScrollLeft}
-            className="bg-black rounded-lg shadow-lg transition-opacity"
+            className="bg-black rounded-lg shadow-lg cursor-pointer"
           >
             <ArrowLeft className="text-white size-6" />
           </Button>
 
           {/* Product List */}
           <ul
-            ref={scrollContainerRef}
+            ref={scrollRef}
             onScroll={checkScrollPosition}
-            className="flex-1 flex gap-4 overflow-x-auto pb-4 scroll-smooth scrollbar-hide"
+            className="flex-1 flex gap-4 overflow-hidden pb-4 scroll-smooth scrollbar-hide"
           >
             {data.map((item) => (
               <li key={item.id}>
@@ -82,7 +80,7 @@ const SanPhamBanChay = () => {
             size="icon"
             onClick={handleNext}
             disabled={!canScrollRight}
-            className="bg-black rounded-lg shadow-lg transition-opacity"
+            className="bg-black rounded-lg shadow-lg cursor-pointer"
           >
             <ArrowRight className="text-white size-6" />
           </Button>
@@ -91,9 +89,6 @@ const SanPhamBanChay = () => {
 
       {/* Hide scrollbar CSS */}
       <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
@@ -103,4 +98,4 @@ const SanPhamBanChay = () => {
   );
 };
 
-export default SanPhamBanChay;
+export default ListProductItem;

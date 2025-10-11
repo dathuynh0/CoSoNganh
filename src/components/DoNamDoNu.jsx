@@ -3,12 +3,12 @@ import { Button } from "./ui/button";
 
 const DoNamDoNu = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
       {/* nam */}
       <div className="max-w-1/2">
         <NavLink to="/donam">
           <img
-            className="w-full h-full md:h-[28rem] object-cover hover:scale-102 transition-transform duration-300"
+            className="w-full h-full md:h-[30rem] object-cover hover:scale-102 transition-transform duration-300"
             src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400"
             alt="Sản phẩm nam"
           />
@@ -32,7 +32,7 @@ const DoNamDoNu = () => {
       <div className="max-w-1/2">
         <NavLink to="/donu">
           <img
-            className="w-full h-full h-[28rem] object-cover hover:scale-102 transition-transform duration-300"
+            className="w-full h-full md:h-[30rem] object-cover hover:scale-102 transition-transform duration-300"
             src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400"
             alt="Sản phẩm nam"
           />

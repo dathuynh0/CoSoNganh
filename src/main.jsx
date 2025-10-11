@@ -3,10 +3,10 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter, Route, Routes } from "react-router";
-import DoNam from "./components/DoNam";
-import DoNu from "./components/DoNu";
-import PhuKien from "./components/PhuKien";
-import HomePage from "./components/HomePage";
+import DoNam from "./pages/DoNam";
+import DoNu from "./pages/DoNu";
+import PhuKien from "./pages/PhuKien";
+import HomePage from "./pages/HomePage";
 import Signup from "./components/Signup";
 
 createRoot(document.getElementById("root")).render(
