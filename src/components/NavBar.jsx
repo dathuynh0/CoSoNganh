@@ -9,7 +9,7 @@ import logo from "../assets/logo.png";
 
 import { useState } from "react";
 import ResponsiveMenu from "./ResponsiveMenu.jsx";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 import "./mystyle.css";
 import Login from "./Login";
 
@@ -27,7 +27,7 @@ const NavBar = () => {
   };
   return (
     <>
-      <nav className="flex justify-between items-center p-2 font-[Sora]">
+      <nav className="flex justify-between items-center p-2">
         {/* logo */}
         <a href="/">
           <img className="size-16 rounded-full" src={logo} alt="" />
@@ -64,7 +64,7 @@ const NavBar = () => {
                 <ul className="py-2 min-w-[200px]">
                   <li className="hover:bg-gray-300 transition-colors">
                     <NavLink
-                      to="/thuonghieu/bitis"
+                      to="/thuong-hieu/bitis"
                       className="block px-4 py-2 whitespace-nowrap active"
                     >
                       Biti's
@@ -72,7 +72,7 @@ const NavBar = () => {
                   </li>
                   <li className="hover:bg-gray-300 transition-colors">
                     <NavLink
-                      to="/thuonghieu/yame"
+                      to="/thuong-hieu/yame"
                       className="block px-4 py-2 whitespace-nowrap"
                     >
                       Yame
@@ -80,7 +80,7 @@ const NavBar = () => {
                   </li>
                   <li className="hover:bg-gray-300 transition-colors">
                     <NavLink
-                      to="/thuonghieu/nike"
+                      to="/thuong-hieu/nike"
                       className="block px-4 py-2 whitespace-nowrap"
                     >
                       Nike
@@ -90,13 +90,13 @@ const NavBar = () => {
               </div>
             </li>
             <li>
-              <NavLink to="/donam">Đồ nam</NavLink>
+              <NavLink to="/do-nam">Đồ nam</NavLink>
             </li>
             <li>
-              <NavLink to="/donu">Đồ nữ</NavLink>
+              <NavLink to="/do-nu">Đồ nữ</NavLink>
             </li>
             <li>
-              <NavLink to="/phukien">Phụ kiện</NavLink>
+              <NavLink to="/phu-kien">Phụ kiện</NavLink>
             </li>
           </ul>
         </div>

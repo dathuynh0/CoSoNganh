@@ -5,9 +5,9 @@ import { NavLink } from "react-router";
 const ListDoNu = () => {
   return (
     <>
-      <div className="flex items-center justify-between">
-        <h2 className="mt-6 text-justify text-5xl font-light">Đồ nữ</h2>
-        <NavLink className="hover:text-blue-600" to="/donu">
+      <div className="mt-6 flex items-center justify-between">
+        <h2 className="text-justify text-3xl md:text-4xl">Đồ nữ</h2>
+        <NavLink className="hover:text-blue-600 hover:underline" to="/do-nu">
           Xem chi tiết
         </NavLink>
       </div>

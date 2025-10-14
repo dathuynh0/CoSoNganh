@@ -16,9 +16,9 @@ createRoot(document.getElementById("root")).render(
         <Route element={<App />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/donam" element={<DoNam />} />
-          <Route path="/donu" element={<DoNu />} />
-          <Route path="/phukien" element={<PhuKien />} />
+          <Route path="/do-nam" element={<DoNam />} />
+          <Route path="/do-nu" element={<DoNu />} />
+          <Route path="/phu-kien" element={<PhuKien />} />
         </Route>
       </Routes>
     </BrowserRouter>

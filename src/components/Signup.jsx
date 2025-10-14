@@ -75,7 +75,7 @@ const Signup = () => {
                 placeholder="Mật khẩu"
               />
               <div className="flex flex:col md:flex-row justify-center items-center mt-6">
-                <Button className="bg-black text-white text-base hover:opacity-80 p-6 px-15 rounded-xl md:mr-6">
+                <Button className="bg-black text-white text-base hover:opacity-80 p-6 px-15 rounded-xl mr-6">
                   Đăng nhập
                 </Button>
                 <p className="text-base">

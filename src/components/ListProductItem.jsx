@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import ProDuctItem from "./ProductItems";
-import { Button } from "./ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const ListProductItem = ({ data, title }) => {
@@ -8,64 +7,64 @@ const ListProductItem = ({ data, title }) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // kiểm tra vị trí scroll
-  const checkScrollPosition = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 5);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5);
-      console.log(scrollLeft, scrollWidth, clientWidth);
+  // Hàm kiểm tra vị trí cuộn đơn giản
+  const checkScrollButtons = () => {
+    const element = scrollRef.current;
+    if (element) {
+      // scrollLeft là vị trí thanh cuộn hiện tại
+      const isEnd =
+        element.scrollWidth - element.scrollLeft - element.clientWidth < 5;
+      const isStart = element.scrollLeft < 5;
+
+      setCanScrollLeft(!isStart);
+      setCanScrollRight(!isEnd);
     }
   };
 
-  // Kiểm tra khi component mount
   useEffect(() => {
-    checkScrollPosition();
+    const element = scrollRef.current;
+    if (!element) return;
+
+    // Kiểm tra lần đầu khi component mount
+    checkScrollButtons();
   }, []);
 
-  // Hàm scroll sang trái
-  const handlePrev = () => {
+  // Hàm cuộn sang trái hoặc phải
+  const handleScroll = (method) => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: -300,
-      });
-    }
-  };
+      const scrollAmount = scrollRef.current.clientWidth * 0.5; // Cuộn 50% chiều rộng
+      const scroll = method === "left" ? -scrollAmount : scrollAmount; // bằng left lùi nên trừ
 
-  // Hàm scroll sang phải
-  const handleNext = () => {
-    if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: 300,
+        left: scroll,
       });
     }
   };
 
   return (
     <>
-      {/* Product List Section */}
-      <div className="max-w-full mx-auto px-4 py-8 mb-10">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {title && (
-          <h2 className="mt-6 text-center text-5xl font-light mb-6">{title}</h2>
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-8 text-gray-800">
+            {title}
+          </h2>
         )}
 
-        <div className="flex items-center gap-4">
-          {/* previous button */}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={handlePrev}
+        <div className="relative group">
+          {/* Nút cuộn trái */}
+          <button
+            onClick={() => handleScroll("left")}
             disabled={!canScrollLeft}
-            className="bg-black rounded-lg shadow-lg cursor-pointer"
+            className={`absolute top-1/2 left-0 z-10 p-2 bg-white rounded-full shadow-lg transition-all duration-300 hidden md:flex items-center justify-center disabled:opacity-0 opacity-0 group-hover:opacity-100`}
           >
-            <ArrowLeft className="text-white size-6" />
-          </Button>
+            <ArrowLeft className="text-gray-700 h-6 w-6" />
+          </button>
 
-          {/* Product List */}
+          {/* Danh sách sản phẩm */}
           <ul
             ref={scrollRef}
-            onScroll={checkScrollPosition}
-            className="flex-1 flex gap-4 overflow-hidden pb-4 scroll-smooth scrollbar-hide"
+            onScroll={checkScrollButtons}
+            className="flex gap-4 md:gap-6 overflow-x-auto pb-4 scroll-smooth scrollbar-hide"
           >
             {data.map((item) => (
               <li key={item.id}>
@@ -74,26 +73,23 @@ const ListProductItem = ({ data, title }) => {
             ))}
           </ul>
 
-          {/* Next Button */}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={handleNext}
+          {/* Nút cuộn phải */}
+          <button
+            onClick={() => handleScroll("right")}
             disabled={!canScrollRight}
-            className="bg-black rounded-lg shadow-lg cursor-pointer"
+            className={`absolute top-1/2 right-0 z-10 p-2 bg-white rounded-full shadow-lg transition-all duration-300 hidden md:flex items-center justify-center disabled:opacity-0 opacity-0 group-hover:opacity-100`}
           >
-            <ArrowRight className="text-white size-6" />
-          </Button>
+            <ArrowRight className="text-gray-700 h-6 w-6" />
+          </button>
         </div>
-      </div>
 
-      {/* Hide scrollbar CSS */}
-      <style>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+        {/* CSS để ẩn scrollbar */}
+        <style>{`
+        .scrollbar-hide { 
+          -ms-overflow-style: none; scrollbar-width: none; 
         }
       `}</style>
+      </div>
     </>
   );
 };

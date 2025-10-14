@@ -9,9 +9,8 @@ const ProDuctItem = ({ image, imageWhenHover, title, price }) => {
     <div
       onMouseMove={() => setWhenHover(true)}
       onMouseLeave={() => setWhenHover(false)}
-      className="border-0 hover:shadow-lg min-w-1/2 md:min-w-[18rem] md:min-h-[30rem] hover:scale-105 transition-all duration-200 flex flex-col overflow-hidden"
+      className="border-0 hover:shadow-lg min-w-1/2 md:min-w-[18rem] md:min-h-[30rem] flex flex-col overflow-hidden rounded-lg bg-white"
     >
-      {/* Phần hình ảnh - giảm chiều cao xuống */}
       <div className="relative w-full h-[20rem] overflow-hidden">
         <img
           className="w-full h-full object-cover rounded-lg transition-opacity duration-300"
@@ -27,24 +26,22 @@ const ProDuctItem = ({ image, imageWhenHover, title, price }) => {
         />
       </div>
 
-      {/* Phần nội dung - tăng không gian */}
       <div className="flex flex-col flex-1 p-2 space-y-14">
-        {/* Title - 2 dòng */}
-        <h3 className="text-sm md:text-base font-medium leading-snug line-clamp-2 w-full min-h-[2.5rem] mt-4">
+        <h3 className="text-sm md:text-lg font-medium leading-snug line-clamp-2 w-full min-h-[2.5rem] mt-4">
           {title}
         </h3>
 
-        {/* Price & Button */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between w-full">
           <span className="text-sm md:text-base whitespace-nowrap inline-block mr-2">
             {price}
           </span>
           <Button
             variant="ghost"
-            className="bg-black text-white hover:bg-black/90 text-xs md:text-sm py-2 h-auto flex items-center justify-between cursor-pointer"
+            className="bg-black text-white hover:opacity-85 text-xs md:text-sm py-2 h-auto flex items-center justify-between cursor-pointer"
           >
-            Thêm vào giỏ
-            <ShoppingCart />
+            <span className="hidden md:inline">Thêm vào giỏ</span>
+            <span className="md:hidden">Thêm</span>
+            <ShoppingCart className="size-5" />
           </Button>
         </div>
       </div>

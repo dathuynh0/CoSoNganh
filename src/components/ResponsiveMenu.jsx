@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 
 const ResponsiveMenu = ({ open }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -15,7 +15,7 @@ const ResponsiveMenu = ({ open }) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.3 }}
-            className="absolute left-0 top-20 w-full h-screen z-20"
+            className="absolute left-0 top-15 right-0 w-full h-screen z-20"
           >
             <div className="text-xl uppercase font-semibold bg-gray-300 text-blue-600 py-10 m-6 rounded-2xl">
               <ul className="flex flex-col justify-center items-center gap-10">
@@ -59,13 +59,13 @@ const ResponsiveMenu = ({ open }) => {
                 </li>
 
                 <li>
-                  <NavLink to="/donam">Đồ nam</NavLink>
+                  <NavLink to="/do-nam">Đồ nam</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/donu">Đồ nữ</NavLink>
+                  <NavLink to="/do-nu">Đồ nữ</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/phukien">Phụ kiện</NavLink>
+                  <NavLink to="/phu-kien">Phụ kiện</NavLink>
                 </li>
               </ul>
             </div>

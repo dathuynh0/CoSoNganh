@@ -12,7 +12,7 @@ const Login = ({ check }) => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 150 }}
           transition={{ duration: 0.3 }}
-          className="absolute top-15 right-5  w-25rem h-[25rem] z-20 bg-indigo-100 rounded-2xl p-6"
+          className="absolute top-15 right-2  w-25rem h-[25rem] z-20 bg-indigo-100 rounded-2xl p-6"
         >
           <div>
             <h1 className="text-2xl uppercase text-center">
@@ -39,9 +39,9 @@ const Login = ({ check }) => {
             </div>
             <p className="text-right mt-4 text-base">
               Bạn chưa có tài khoản?
-              <NavLink className="text-blue-600" to="/signup">
+              <a className="text-blue-600" href="/signup">
                 Đăng kí ngay
-              </NavLink>
+              </a>
             </p>
           </div>
         </motion.div>
