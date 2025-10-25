@@ -1,18 +1,21 @@
-import ListProductItem from "./ListProductItem";
-
-import { data } from "../lib/data";
-import { NavLink } from "react-router";
+import { phukienDemo } from "../lib/data";
+import ProDuctItem from "./ProductItems";
+import { Button } from "./ui/button";
 
 const ListPhuKien = () => {
   return (
     <>
-      <div className="mt-6 flex items-center justify-between">
-        <h2 className="text-justify text-3xl md:text-4xl">Phụ kiện</h2>
-        <NavLink className="hover:text-blue-600 hover:underline" to="/phu-kien">
-          Xem chi tiết
-        </NavLink>
+      <h2 className="text-3xl md:text-4xl mb-8">Phụ kiện</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 m-4">
+        {phukienDemo.map((item) => {
+          return <ProDuctItem key={item.id} {...item} />;
+        })}
       </div>
-      <ListProductItem data={data} />
+      <div className="flex justify-center mt-8 mb-8">
+        <Button className="text-center text-xl cursor-pointer text-white bg-black p-6 hover:opacity-85">
+          <a href="/phu-kien">Xem tất cả</a>
+        </Button>
+      </div>
     </>
   );
 };

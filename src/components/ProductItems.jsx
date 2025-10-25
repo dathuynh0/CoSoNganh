@@ -9,9 +9,9 @@ const ProDuctItem = ({ image, imageWhenHover, title, price }) => {
     <div
       onMouseMove={() => setWhenHover(true)}
       onMouseLeave={() => setWhenHover(false)}
-      className="border-0 hover:shadow-lg min-w-1/2 md:min-w-[18rem] md:min-h-[30rem] flex flex-col overflow-hidden rounded-lg bg-white"
+      className="border-0 hover:shadow-lg min-w-1/2 md:w-[18rem] md:h-[30rem] flex flex-col overflow-hidden rounded-lg bg-white hover:translate-y-[-0.5rem] transition-all duration-300 cursor-pointer"
     >
-      <div className="relative w-full h-[20rem] overflow-hidden">
+      <div className="relative w-full h-[15rem] md:h-[20rem] overflow-hidden">
         <img
           className="w-full h-full object-cover rounded-lg transition-opacity duration-300"
           src={image}
@@ -27,10 +27,10 @@ const ProDuctItem = ({ image, imageWhenHover, title, price }) => {
       </div>
 
       <div className="flex flex-col flex-1 p-2 space-y-14">
-        <h3 className="text-sm md:text-lg font-medium leading-snug line-clamp-2 w-full min-h-[2.5rem] mt-4">
+        <h3 className="text-sm md:text-lg font-medium leading-snug line-clamp-2 w-full h-[2.6rem] md:h-[2.9rem] mt-4">
           {title}
         </h3>
-
+        {/* giá và button */}
         <div className="flex items-center justify-between w-full">
           <span className="text-sm md:text-base whitespace-nowrap inline-block mr-2">
             {price}

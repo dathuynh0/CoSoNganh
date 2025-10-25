@@ -1,15 +1,14 @@
-import ListProductItem from "./ListProductItem.jsx";
-
-import { data } from "../lib/data.js";
+import React from "react";
 import ListDoNam from "./ListDoNam.jsx";
 import ListDoNu from "./ListDoNu.jsx";
 import ListPhuKien from "./ListPhuKien.jsx";
+import ListBanChay from "./ListBanChay.jsx";
 
 const BodyHomePage = () => {
   return (
     <>
       {/* sản phẩm bán chạy */}
-      <ListProductItem data={data} title="Sản phẩm bán chạy" />
+      <ListBanChay />
 
       {/* đồ nam */}
       <ListDoNam />

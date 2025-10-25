@@ -1,17 +1,23 @@
-import ListProductItem from "./ListProductItem";
+import React from "react";
 
-import { data } from "../lib/data";
-import { Link } from "react-router";
+import { dataNamDemo } from "../lib/data.js";
+import ProDuctItem from "./ProductItems";
+import { Button } from "./ui/button";
+
 const ListDoNam = () => {
   return (
     <>
-      <div className="mt-6 flex items-center justify-between">
-        <h2 className="text-3xl md:text-4xl">Đồ nam</h2>
-        <Link className="hover:text-blue-600 hover:underline" to="/do-nam">
-          Xem chi tiết
-        </Link>
+      <h2 className="text-3xl md:text-4xl mb-8">Sản phẩm nam</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 m-4">
+        {dataNamDemo.map((item) => {
+          return <ProDuctItem key={item.id} {...item} />;
+        })}
       </div>
-      <ListProductItem data={data} />
+      <div className="flex justify-center mt-8 mb-8">
+        <Button className="text-center text-xl cursor-pointer text-white bg-black p-6 hover:opacity-85">
+          <a href="/do-nam">Xem tất cả</a>
+        </Button>
+      </div>
     </>
   );
 };

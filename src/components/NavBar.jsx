@@ -1,22 +1,31 @@
 import {
   ChevronDown,
   CircleUserRound,
-  HandPlatter,
+  LogOut,
+  Search,
   ShoppingCartIcon,
   TextAlignJustify,
 } from "lucide-react";
-import logo from "../assets/logo.png";
 
 import { useState } from "react";
 import ResponsiveMenu from "./ResponsiveMenu.jsx";
 import { NavLink } from "react-router";
 import "./mystyle.css";
 import Login from "./Login";
+import { user } from "../lib/data.js";
+import { toast } from "sonner";
+import { Input } from "./ui/input.jsx";
+import SearchBar from "./SearchBar.jsx";
 
 const NavBar = () => {
   const [check, setCheck] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [checkLogin, setCheckLogin] = useState(false);
+
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const openMenu = () => {
     setCheck(!check);
@@ -25,21 +34,54 @@ const NavBar = () => {
   const handleCheckLogin = () => {
     setCheckLogin(!checkLogin);
   };
+
+  const handleLogout = () => {
+    setIsSuccess(false);
+  };
+
+  const successLogin = () => {
+    if (!username && !password) {
+      alert("Vui lòng nhập tài khoản và mật khẩu");
+      toast.error("Đăng nhâp thất bại!");
+      return;
+    }
+    if (username === user[0].username && password === user[0].password) {
+      setIsSuccess(true);
+      setCheckLogin(false);
+      setUsername("");
+      setPassword("");
+      toast.success("Đăng nhập thành công!");
+      return;
+    }
+    alert("Tài khoản hoặc mật khẩu không đúng");
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      successLogin();
+    }
+  };
+
   return (
     <>
       <nav className="flex justify-between items-center p-2">
         {/* logo */}
         <a href="/">
-          <img className="size-16 rounded-full" src={logo} alt="" />
+          <p className="text-3xl font-extrabold bg-gradient-to-b from-white/20 to-black inline-block text-transparent bg-clip-text">
+            M O D A
+          </p>
         </a>
 
         {/* item */}
         <div className="hidden md:block">
-          <ul className="flex items-center justify-center gap-x-8 text-lg text-blue-700 uppercase">
+          <ul className="flex items-center justify-center gap-x-8 text-lg text-black uppercase">
             <li>
               <NavLink className="" to="/">
                 Trang chủ
               </NavLink>
+            </li>
+            <li>
+              <NavLink to="/sale">Sale</NavLink>
             </li>
             <li
               className="relative group"
@@ -100,15 +142,29 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
+        {/* search */}
+        <SearchBar />
 
         {/* icon */}
         <div className="flex items-center gap-x-3">
-          <CircleUserRound
-            onClick={handleCheckLogin}
-            className="relative size-8 cursor-pointer"
-          />
+          {isSuccess && (
+            <div className="flex items-center">
+              <p className="text-black mr-2">{user[0].username}</p>
+              <LogOut
+                onClick={handleLogout}
+                className="size-8 cursor-pointer"
+              />
+            </div>
+          )}
+          {!isSuccess && (
+            <CircleUserRound
+              onClick={handleCheckLogin}
+              className="size-8 cursor-pointer"
+            />
+          )}
 
           <ShoppingCartIcon className="size-8 cursor-pointer" />
+
           <TextAlignJustify
             onClick={openMenu}
             className="size-8 cursor-pointer md:hidden"
@@ -117,7 +173,16 @@ const NavBar = () => {
       </nav>
 
       {/* login */}
-      <Login check={checkLogin} />
+      <Login
+        check={checkLogin}
+        checkLogin={successLogin}
+        username={username}
+        password={password}
+        setUsername={setUsername}
+        setPassword={setPassword}
+        handleKeyDown={handleKeyDown}
+      />
+
       {/* responsive */}
       <ResponsiveMenu open={check} />
       {}

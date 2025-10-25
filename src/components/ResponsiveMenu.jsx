@@ -22,7 +22,9 @@ const ResponsiveMenu = ({ open }) => {
                 <li>
                   <NavLink to="/">Trang chủ</NavLink>
                 </li>
-
+                <li>
+                  <NavLink to="/sale">Sale</NavLink>
+                </li>
                 {/* Dropdown Thương hiệu */}
                 <li className="w-full">
                   <div

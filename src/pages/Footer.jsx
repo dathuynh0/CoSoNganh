@@ -7,8 +7,6 @@ import {
   Twitter,
 } from "lucide-react";
 
-import logo from "../assets/logo.png";
-
 import { Button } from "../components/ui/button";
 import { Link } from "react-router";
 
@@ -19,11 +17,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:justify-between items-start gap-10">
           <div className="flex flex-col gap-y-4 w-full md:w-1/3 lg:w-2/5">
             <a href="/" className="flex items-center gap-x-3 mb-2">
-              <img
-                src={logo}
-                alt="Logo cửa hàng"
-                className="size-16 rounded-full"
-              />
+              <p className="text-3xl font-extrabold bg-gradient-to-b from-white/20 to-black inline-block text-transparent bg-clip-text">
+                M O D A
+              </p>
             </a>
             <div className="flex items-start gap-x-3">
               <MapPin className="size-5 mt-1 flex-shrink-0" />

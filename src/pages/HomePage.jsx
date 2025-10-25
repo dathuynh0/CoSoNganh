@@ -1,12 +1,12 @@
 import BodyHomePage from "../components/BodyHomePage";
 import Banner from "../components/Banner";
-import DoNamDoNu from "../components/DoNamDoNu";
+import ProductCategories from "../components/ProductCategories";
 
 const HomePage = () => {
   return (
     <>
       <Banner />
-      <DoNamDoNu />
+      <ProductCategories />
       <BodyHomePage />
     </>
   );

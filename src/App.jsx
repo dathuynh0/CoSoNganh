@@ -1,10 +1,12 @@
 import { Outlet } from "react-router";
 import NavBar from "./components/NavBar";
 import Footer from "./pages/Footer";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <div className="bg-slate-200 font-['Roboto']">
+      <Toaster />
       <div className="bg-slate-100 flex justify-center sticky top-0 right-0 left-0 z-50">
         <div className="w-full md:w-4/5">
           <NavBar />

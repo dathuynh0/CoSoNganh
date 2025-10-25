@@ -1,9 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { NavLink } from "react-router";
+import { HandPlatter } from "lucide-react";
+import Signup from "./Signup";
 
-const Login = ({ check }) => {
+const Login = ({
+  check,
+  checkLogin,
+  username,
+  password,
+  setUsername,
+  setPassword,
+  handleKeyDown,
+}) => {
   return (
     <>
       {check && (
@@ -21,22 +30,35 @@ const Login = ({ check }) => {
             <p className="text-center text-lg font-light text-gray-800">
               Nhập email và mật khẩu của bạn:
             </p>
+
             <hr className="m-4 w-full text-center border-1" />
+
             <Input
               className="mt-4 w-full p-6 text-xl"
               type="text"
               placeholder="Email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
             <Input
               className="mt-4 w-full p-6 text-xl"
               type="password"
               placeholder="Mật khẩu"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
+
             <div className="flex justify-center mt-6">
-              <Button className="inline-block w-2/3 border-1 cursor-pointer bg-black text-white rounded-xl hover:opacity-80">
+              <Button
+                onClick={checkLogin}
+                className="inline-block w-2/3 border-1 cursor-pointer bg-black text-white rounded-xl hover:opacity-80"
+              >
                 Đăng nhập
               </Button>
             </div>
+
             <p className="text-right mt-4 text-base">
               Bạn chưa có tài khoản?
               <a className="text-blue-600" href="/signup">
