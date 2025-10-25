@@ -1,7 +1,7 @@
 import React from "react";
-import ListDoNam from "./ListDoNam.jsx";
-import ListDoNu from "./ListDoNu.jsx";
-import ListPhuKien from "./ListPhuKien.jsx";
+import ListDoNam from "./ProductNam/ListDoNam.jsx";
+import ListDoNu from "./ProductNu/ListDoNu.jsx";
+import ListPhuKien from "./PhuKien/ListPhuKien.jsx";
 import ListBanChay from "./ListBanChay.jsx";
 
 const BodyHomePage = () => {

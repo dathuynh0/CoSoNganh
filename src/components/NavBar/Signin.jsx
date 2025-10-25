@@ -1,10 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { HandPlatter } from "lucide-react";
-import Signup from "./Signup";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
-const Login = ({
+const Signin = ({
   check,
   checkLogin,
   username,
@@ -16,7 +14,7 @@ const Login = ({
   return (
     <>
       {check && (
-        <motion.div
+        <motion.form
           initial={{ opacity: 0, x: 150 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 150 }}
@@ -34,15 +32,15 @@ const Login = ({
             <hr className="m-4 w-full text-center border-1" />
 
             <Input
-              className="mt-4 w-full p-6 text-xl"
-              type="text"
+              className="mt-4 w-full p-5 text-xl"
+              type="email"
               placeholder="Email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               onKeyDown={handleKeyDown}
             />
             <Input
-              className="mt-4 w-full p-6 text-xl"
+              className="mt-4 w-full p-5 text-xl"
               type="password"
               placeholder="Mật khẩu"
               value={password}
@@ -61,15 +59,15 @@ const Login = ({
 
             <p className="text-right mt-4 text-base">
               Bạn chưa có tài khoản?
-              <a className="text-blue-600" href="/signup">
+              <a className="text-blue-600 hover:underline" href="/signup">
                 Đăng kí ngay
               </a>
             </p>
           </div>
-        </motion.div>
+        </motion.form>
       )}
     </>
   );
 };
 
-export default Login;
+export default Signin;

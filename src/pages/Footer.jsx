@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-y-2">
-            <h3 className="text-lg font-semibold mb-2">Về ĐatFashion</h3>
+            <h3 className="text-lg font-semibold mb-2">Về MODA</h3>
             <Link
               className="hover:text-blue-600 hover:underline"
               to="/gioithieu"
@@ -116,9 +116,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-300 mt-10 pt-6 text-center text-sm text-gray-500">
-          <p>
-            &copy; {new Date().getFullYear()} ĐatFashion. All Rights Reserved.
-          </p>
+          <p>&copy; 2025 MODA. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

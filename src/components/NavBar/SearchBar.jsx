@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 
 const SearchBar = () => {
@@ -7,16 +7,14 @@ const SearchBar = () => {
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-    // Ví dụ: onSearch(event.target.value);
   };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    console.log("Thực hiện tìm kiếm với từ khóa:", searchTerm);
   };
 
   return (
-    <form onSubmit={handleSearchSubmit} className="">
+    <form onSubmit={handleSearchSubmit}>
       <div className="relative">
         <Input
           type="text"
@@ -29,7 +27,7 @@ const SearchBar = () => {
           type="submit"
           className="absolute left-3 top-1/2 -translate-y-1/2"
         >
-          <Search />
+          <Search className="h-5 w-5" />
         </button>
       </div>
     </form>

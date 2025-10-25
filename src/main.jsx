@@ -8,7 +8,7 @@ import DoNu from "./pages/DoNu";
 import PhuKien from "./pages/PhuKien";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
-import Signup from "./components/Signup";
+import Signup from "./components/NavBar/Signup";
 import Admin from "./pages/Admin";
 import Sale from "./pages/Sale";
 

@@ -360,5 +360,10 @@ export const phukienDemo = [
 ];
 
 export const user = [
-  { username: "huynhdat123", password: "123", position: "user" },
+  {
+    username: "Đạt",
+    email: "huynhdat@gmail.com",
+    password: "123",
+    position: "user",
+  },
 ];

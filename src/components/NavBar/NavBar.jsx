@@ -9,12 +9,11 @@ import {
 
 import { useState } from "react";
 import ResponsiveMenu from "./ResponsiveMenu.jsx";
-import { NavLink } from "react-router";
-import "./mystyle.css";
-import Login from "./Login";
-import { user } from "../lib/data.js";
+import { NavLink } from "react-router-dom";
+import "../mystyle.css";
+import Signin from "./Signin.jsx";
+import { user } from "../../lib/data.js";
 import { toast } from "sonner";
-import { Input } from "./ui/input.jsx";
 import SearchBar from "./SearchBar.jsx";
 
 const NavBar = () => {
@@ -24,7 +23,7 @@ const NavBar = () => {
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const openMenu = () => {
@@ -40,15 +39,15 @@ const NavBar = () => {
   };
 
   const successLogin = () => {
-    if (!username && !password) {
+    if (!email && !password) {
       alert("Vui lòng nhập tài khoản và mật khẩu");
       toast.error("Đăng nhâp thất bại!");
       return;
     }
-    if (username === user[0].username && password === user[0].password) {
+    if (email === user[0].email && password === user[0].password) {
       setIsSuccess(true);
       setCheckLogin(false);
-      setUsername("");
+      setEmail("");
       setPassword("");
       toast.success("Đăng nhập thành công!");
       return;
@@ -64,7 +63,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center p-2">
+      <nav className="flex justify-between items-center p-6 flex-wrap">
         {/* logo */}
         <a href="/">
           <p className="text-3xl font-extrabold bg-gradient-to-b from-white/20 to-black inline-block text-transparent bg-clip-text">
@@ -73,7 +72,7 @@ const NavBar = () => {
         </a>
 
         {/* item */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ul className="flex items-center justify-center gap-x-8 text-lg text-black uppercase">
             <li>
               <NavLink className="" to="/">
@@ -143,7 +142,9 @@ const NavBar = () => {
           </ul>
         </div>
         {/* search */}
-        <SearchBar />
+        <div className="w-full order-last mt-4 md:order-none md:w-auto md:mt-0">
+          <SearchBar />
+        </div>
 
         {/* icon */}
         <div className="flex items-center gap-x-3">
@@ -173,12 +174,12 @@ const NavBar = () => {
       </nav>
 
       {/* login */}
-      <Login
+      <Signin
         check={checkLogin}
         checkLogin={successLogin}
-        username={username}
+        username={email}
         password={password}
-        setUsername={setUsername}
+        setUsername={setEmail}
         setPassword={setPassword}
         handleKeyDown={handleKeyDown}
       />

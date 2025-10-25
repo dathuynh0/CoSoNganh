@@ -1,5 +1,5 @@
 import BodyHomePage from "../components/BodyHomePage";
-import Banner from "../components/Banner";
+import Banner from "../components/Banner/Banner";
 import ProductCategories from "../components/ProductCategories";
 
 const HomePage = () => {
