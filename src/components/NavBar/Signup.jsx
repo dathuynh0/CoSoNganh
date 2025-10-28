@@ -6,7 +6,7 @@ import { toast } from "sonner";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -26,9 +26,9 @@ const Signup = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const { fullName, email, password, confirmPassword } = formData;
+    const { name, email, password, confirmPassword } = formData;
 
-    if (!fullName || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword) {
       alert("Vui lòng điền đầy đủ thông tin.");
       toast.error("Vui lòng điền đầy đủ thông tin.");
       return;
@@ -40,7 +40,6 @@ const Signup = () => {
       return;
     }
 
-    console.log("Đăng ký thành công với:", formData);
     toast.success("Đăng ký thành công!");
     setIsSuccess(true);
   };
@@ -60,7 +59,7 @@ const Signup = () => {
                 type="text"
                 placeholder="Họ và tên"
                 name="fullName"
-                value={formData.fullName}
+                value={formData.name}
                 onChange={handleChange}
               />
               <Input

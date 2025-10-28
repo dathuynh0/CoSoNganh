@@ -69,49 +69,46 @@ const Footer = () => {
 
           <div className="flex flex-col gap-y-2">
             <h3 className="text-lg font-semibold mb-2">Về MODA</h3>
-            <Link
+            <a
               className="hover:text-blue-600 hover:underline"
-              to="/gioithieu"
+              href="/gioithieu"
             >
               Giới thiệu
-            </Link>
-            <Link className="hover:text-blue-600 hover:underline" to="/">
+            </a>
+            <a className="hover:text-blue-600 hover:underline" href="/">
               Trang chủ
-            </Link>
-            <Link className="hover:text-blue-600 hover:underline" to="/do-nam">
+            </a>
+            <a className="hover:text-blue-600 hover:underline" href="/do-nam">
               Đồ nam
-            </Link>
-            <Link className="hover:text-blue-600 hover:underline" to="/do-nu">
+            </a>
+            <a className="hover:text-blue-600 hover:underline" href="/do-nu">
               Đồ nữ
-            </Link>
-            <Link
-              className="hover:text-blue-600 hover:underline"
-              to="/phu-kien"
-            >
+            </a>
+            <a className="hover:text-blue-600 hover:underline" href="/phu-kien">
               Phụ kiện
-            </Link>
+            </a>
           </div>
 
           <div className="flex flex-col gap-y-2">
             <h3 className="text-lg font-semibold mb-2">Chính sách</h3>
-            <Link
+            <a
               className="hover:text-blue-600 hover:underline"
-              to="/chinh-sach-bao-hanh"
+              href="/chinh-sach-bao-hanh"
             >
               Bảo hành & Đổi trả
-            </Link>
-            <Link
+            </a>
+            <a
               className="hover:text-blue-600 hover:underline"
-              to="/chinh-sach-bao-mat"
+              href="/chinh-sach-bao-mat"
             >
               Bảo mật thông tin
-            </Link>
-            <Link
+            </a>
+            <a
               className="hover:text-blue-600 hover:underline"
-              to="/dieu-khoan-dich-vu"
+              href="/dieu-khoan-dich-vu"
             >
               Điều khoản dịch vụ
-            </Link>
+            </a>
           </div>
         </div>
 

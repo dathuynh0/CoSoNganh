@@ -1,23 +1,8 @@
-import { dataBanChay } from "../lib/data.js";
-import ProDuctItem from "./ProductItems";
-import { Button } from "./ui/button";
+import { bestseller } from "../lib/data.js";
+import ProductList from "./ProductList.jsx";
 
 const ListBanChay = () => {
-  return (
-    <>
-      <h2 className="text-3xl md:text-4xl mb-8">Sản bán chạy</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 m-4">
-        {dataBanChay.map((item) => {
-          return <ProDuctItem key={item.id} {...item} />;
-        })}
-      </div>
-      <div className="flex justify-center mt-8 mb-8">
-        <Button className="text-center text-xl cursor-pointer text-white bg-black p-6 hover:opacity-85">
-          <a href="/san-pham-ban-chay">Xem tất cả</a>
-        </Button>
-      </div>
-    </>
-  );
+  return <ProductList data={bestseller} title="Sản phẩm bán chạy" link="/" />;
 };
 
 export default ListBanChay;

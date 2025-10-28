@@ -1,9 +1,24 @@
-import { Link } from "react-router";
-import { dataNuDemo } from "../lib/data";
+import { Link, useOutletContext } from "react-router";
+import { nu } from "../lib/data";
 import { ChevronRight } from "lucide-react";
 import ProDuctItem from "../components/ProductItems";
+import { useEffect, useState } from "react";
 
 const DoNu = () => {
+  const { search } = useOutletContext();
+  const lowerCaseSearch = search ? search.toLowerCase() : "";
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(nu);
+  }, []);
+
+  const filteredProducts = products.filter((product) => {
+    const lowerCaseProductName = product.name.toLowerCase();
+    return lowerCaseProductName.includes(lowerCaseSearch);
+  });
+
   return (
     <div>
       <section className="pt-8 px-2 pb-8">
@@ -23,8 +38,8 @@ const DoNu = () => {
         <h2 className="text-5xl font-bold mt-8">Sản phẩm nữ</h2>
         <hr className="mt-8" />
         <ul className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
-          {dataNuDemo.map((item) => (
-            <li key={dataNuDemo.id}>
+          {filteredProducts.map((item, index) => (
+            <li key={index}>
               <ProDuctItem {...item} />
             </li>
           ))}

@@ -10,7 +10,7 @@ const Banner = () => {
     <section className="w-full h-[50vh] md:h-screen bg-gray-200">
       <picture className="w-full h-full">
         {/* Màn hình nhỏ (mobile) sẽ sử dụng ảnh này */}
-        <source media="(max-width: 767px)" srcSet={mobileImage} />
+        <source media="(max-width: 992px)" srcSet={mobileImage} />
         <img
           src={desktopImage}
           alt="Banner quảng cáo"

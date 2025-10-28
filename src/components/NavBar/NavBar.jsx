@@ -16,9 +16,8 @@ import { user } from "../../lib/data.js";
 import { toast } from "sonner";
 import SearchBar from "./SearchBar.jsx";
 
-const NavBar = () => {
+const NavBar = ({ search, onSearchChange }) => {
   const [check, setCheck] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [checkLogin, setCheckLogin] = useState(false);
 
   const [isSuccess, setIsSuccess] = useState(false);
@@ -82,70 +81,52 @@ const NavBar = () => {
             <li>
               <NavLink to="/sale">Sale</NavLink>
             </li>
-            <li
-              className="relative group"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
-            >
-              <div className="flex items-center gap-x-2 cursor-pointer">
-                Thương hiệu
-                <ChevronDown
-                  className={`transition-transform duration-200 ${
-                    dropdownOpen ? "rotate-180" : ""
-                  }`}
-                />
+
+            <li className="relative group">
+              <div className="flex items-center gap-x-1">
+                <NavLink to="/do-nam">Đồ nam</NavLink>
+                <ChevronDown />
               </div>
 
-              {/* Dropdown menu */}
-              <div
-                className={`absolute top-8 left-0 bg-white rounded-md shadow-md overflow-hidden transition-all duration-200 ${
-                  dropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
-                }`}
-              >
-                <ul className="py-2 min-w-[200px]">
-                  <li className="hover:bg-gray-300 transition-colors">
-                    <NavLink
-                      to="/thuong-hieu/bitis"
-                      className="block px-4 py-2 whitespace-nowrap active"
-                    >
-                      Biti's
-                    </NavLink>
+              <div className="absolute top-8 left-0 bg-white rounded-md shadow-md overflow-hidden transition-opacity duration-300  opacity-0 group-hover:opacity-100">
+                <ul className="py-4 min-w-[200px] px-4">
+                  <li className="relative group hover:underline">
+                    <NavLink to="/do-nam/ao">Áo</NavLink>
                   </li>
-                  <li className="hover:bg-gray-300 transition-colors">
-                    <NavLink
-                      to="/thuong-hieu/yame"
-                      className="block px-4 py-2 whitespace-nowrap"
-                    >
-                      Yame
-                    </NavLink>
-                  </li>
-                  <li className="hover:bg-gray-300 transition-colors">
-                    <NavLink
-                      to="/thuong-hieu/nike"
-                      className="block px-4 py-2 whitespace-nowrap"
-                    >
-                      Nike
-                    </NavLink>
+                  <li className="mt-2 hover:underline">
+                    <NavLink to="/do-nam/quan">Quần</NavLink>
                   </li>
                 </ul>
               </div>
             </li>
-            <li>
-              <NavLink to="/do-nam">Đồ nam</NavLink>
-            </li>
-            <li>
-              <NavLink to="/do-nu">Đồ nữ</NavLink>
+            <li className="relative group">
+              <div className="flex items-center gap-x-1">
+                <NavLink to="/do-nu">Đồ nữ</NavLink>
+                <ChevronDown />
+              </div>
+
+              <div className="absolute top-8 left-0 bg-white rounded-md shadow-md overflow-hidden transition-opacity duration-300  opacity-0 group-hover:opacity-100">
+                <ul className="py-4 min-w-[200px] px-4">
+                  <li className="relative group hover:underline">
+                    <NavLink to="/do-nam/ao">Áo</NavLink>
+                  </li>
+                  <li className="mt-2 hover:underline">
+                    <NavLink to="/do-nam/quan">Quần</NavLink>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li>
               <NavLink to="/phu-kien">Phụ kiện</NavLink>
             </li>
           </ul>
         </div>
+
+        <div></div>
         {/* search */}
         <div className="w-full order-last mt-4 md:order-none md:w-auto md:mt-0">
-          <SearchBar />
+          <SearchBar search={search} onSearchChange={onSearchChange} />
         </div>
-
         {/* icon */}
         <div className="flex items-center gap-x-3">
           {isSuccess && (

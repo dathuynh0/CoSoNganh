@@ -1,9 +1,24 @@
+import { use, useEffect, useState } from "react";
 import ProDuctItem from "../components/ProductItems";
-import { phukienDemo } from "../lib/data";
+import { phukien } from "../lib/data";
 import { ChevronRight } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useOutletContext } from "react-router";
 
 const PhuKien = () => {
+  const { search } = useOutletContext();
+  const lowerCaseSearch = search.toLowerCase();
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(phukien);
+  }, []);
+
+  const filteredProducts = products.filter((product) => {
+    const lowerCaseProductName = product.name.toLowerCase();
+    return lowerCaseProductName.includes(lowerCaseSearch);
+  });
+
   return (
     <section className="pt-8 px-2 pb-8">
       <div className="flex items-center">
@@ -22,8 +37,8 @@ const PhuKien = () => {
       <h2 className="text-5xl font-bold mt-8">Phụ kiện</h2>
       <hr className="mt-8" />
       <ul className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
-        {phukienDemo.map((item) => (
-          <li key={phukienDemo.id}>
+        {filteredProducts.map((item, index) => (
+          <li key={index}>
             <ProDuctItem {...item} />
           </li>
         ))}
