@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, TextAlignJustify } from "lucide-react";
 import { NavLink } from "react-router";
 
-const ResponsiveMenu = ({ open }) => {
+const ResponsiveMenu = ({ open, openMenu }) => {
   const [dropdownNamOpen, setDropdownNamOpen] = useState(false);
   const [dropdownNuOpen, setDropdownNuOpen] = useState(false);
 
@@ -12,14 +12,26 @@ const ResponsiveMenu = ({ open }) => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, x: -150 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
             transition={{ duration: 0.3 }}
-            className="absolute left-0 top-15 right-0 w-full h-screen z-20"
+            className="fixed inset-0 z-20"
           >
-            <div className="text-xl uppercase font-semibold bg-gray-300 text-black py-10 m-6 rounded-2xl">
-              <ul className="flex flex-col justify-center items-center gap-10">
+            <div className="text-xl uppercase font-semibold bg-gray-300 text-black w-full h-full overflow-y-auto pt-10 pb-10 px-6">
+              <div className="flex items-center justify-between">
+                <a href="/">
+                  <p className="text-3xl font-extrabold bg-gradient-to-b from-white/20 to-black inline-block text-transparent bg-clip-text">
+                    M O D A
+                  </p>
+                </a>
+
+                <TextAlignJustify
+                  onClick={openMenu}
+                  className="size-8 cursor-pointer lg:hidden"
+                />
+              </div>
+              <ul className="mt-8 flex flex-col justify-center items-center gap-10">
                 <li>
                   <NavLink to="/">Trang chủ</NavLink>
                 </li>

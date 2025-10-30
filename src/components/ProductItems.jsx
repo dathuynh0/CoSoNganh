@@ -2,7 +2,14 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router";
 
-const ProDuctItem = ({ image, imageHover, name, price }) => {
+const ProDuctItem = ({
+  image,
+  imageHover,
+  name,
+  price,
+  product,
+  onAddToCart,
+}) => {
   return (
     <Link
       href="/"
@@ -22,20 +29,21 @@ const ProDuctItem = ({ image, imageHover, name, price }) => {
       </div>
 
       <div className="flex flex-col flex-1 justify-between p-3 md:p-4">
-        <h3 className="text-sm md:text-lg font-medium leading-snug line-clamp-2 min-h-[2.5rem] md:min-h-[3.2rem]">
+        <h3 className="text-sm md:text-lg font-medium leading-snug line-clamp-2 min-h-[2.5rem] md:min-h-[3.1rem]">
           {name}
         </h3>
 
         <div className="flex items-center justify-between w-full mt-4">
-          <span className="text-base md:text-lg font-medium whitespace-nowrap inline-block mr-2">
+          <span className="text-sm md:text-lg font-medium line-clamp-1 whitespace-nowrap inline-block mr-2">
             {price}
           </span>
 
           <Button
+            onClick={() => onAddToCart(product)}
             variant="ghost"
             className="bg-black text-white hover:opacity-85 text-xs md:text-sm py-2 px-3 h-auto flex items-center gap-2 cursor-pointer"
           >
-            <span className="hidden lg:inline">Thêm vào giỏ</span>
+            <span className="hidden lg:inline">Thêm vào</span>
             <span className="lg:hidden">Thêm</span>
             <ShoppingCart className="size-4 md:size-5" />
           </Button>

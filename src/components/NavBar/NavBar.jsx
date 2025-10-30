@@ -2,12 +2,11 @@ import {
   ChevronDown,
   CircleUserRound,
   LogOut,
-  Search,
   ShoppingCartIcon,
   TextAlignJustify,
 } from "lucide-react";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ResponsiveMenu from "./ResponsiveMenu.jsx";
 import { NavLink } from "react-router-dom";
 import "../mystyle.css";
@@ -15,18 +14,32 @@ import Signin from "./Signin.jsx";
 import { user } from "../../lib/data.js";
 import { toast } from "sonner";
 import SearchBar from "./SearchBar.jsx";
+import Cart from "./Cart.jsx";
+import { AuthContext } from "../../AuthContext.jsx";
 
-const NavBar = ({ search, onSearchChange }) => {
-  const [check, setCheck] = useState(false);
+const NavBar = ({
+  search,
+  onSearchChange,
+  data,
+  onMinus,
+  onPlus,
+  onDelete,
+  formattedTotal,
+  cartItems,
+  isSuccess,
+  setIsSuccess,
+}) => {
+  const [checkMobile, setCheck] = useState(false);
   const [checkLogin, setCheckLogin] = useState(false);
+  const [checkCart, setCheckCart] = useState(false);
 
-  const [isSuccess, setIsSuccess] = useState(false);
+  const { accounts } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const openMenu = () => {
-    setCheck(!check);
+    setCheck(!checkMobile);
   };
 
   const handleCheckLogin = () => {
@@ -37,32 +50,47 @@ const NavBar = ({ search, onSearchChange }) => {
     setIsSuccess(false);
   };
 
-  const successLogin = () => {
+  const handleCheckCart = () => {
+    setCheckCart(!checkCart);
+  };
+
+  const handleLogin = () => {
     if (!email && !password) {
       alert("Vui lòng nhập tài khoản và mật khẩu");
       toast.error("Đăng nhâp thất bại!");
       return;
     }
-    if (email === user[0].email && password === user[0].password) {
-      setIsSuccess(true);
-      setCheckLogin(false);
-      setEmail("");
-      setPassword("");
-      toast.success("Đăng nhập thành công!");
+
+    const userFlag = accounts.find((acc) => acc.email === email);
+
+    //check email
+    if (!userFlag) {
+      toast.error("Email này không tồn tại");
       return;
     }
-    alert("Tài khoản hoặc mật khẩu không đúng");
+
+    //check password
+    if (userFlag.password !== password) {
+      toast.error("Mật khẩu không đúng");
+      return;
+    }
+
+    //thành công
+    setIsSuccess(true);
+    setCheckLogin(false);
+    setEmail("");
+    setPassword("");
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      successLogin();
+      handleLogin();
     }
   };
 
   return (
     <>
-      <nav className="flex justify-between items-center p-6 flex-wrap">
+      <nav className="flex justify-between items-center p-6 flex-wrap w-full lg:w-[80%] mx-auto">
         {/* logo */}
         <a href="/">
           <p className="text-3xl font-extrabold bg-gradient-to-b from-white/20 to-black inline-block text-transparent bg-clip-text">
@@ -129,7 +157,7 @@ const NavBar = ({ search, onSearchChange }) => {
         </div>
         {/* icon */}
         <div className="flex items-center gap-x-3">
-          {isSuccess && (
+          {isSuccess ? (
             <div className="flex items-center">
               <p className="text-black mr-2">{user[0].username}</p>
               <LogOut
@@ -137,19 +165,33 @@ const NavBar = ({ search, onSearchChange }) => {
                 className="size-8 cursor-pointer"
               />
             </div>
-          )}
-          {!isSuccess && (
+          ) : (
             <CircleUserRound
               onClick={handleCheckLogin}
               className="size-8 cursor-pointer"
             />
           )}
 
-          <ShoppingCartIcon className="size-8 cursor-pointer" />
+          <div className="relative">
+            {cartItems.length > 0 && (
+              <span
+                className="absolute -top-2 -right-2 
+                 bg-red-500 text-white text-xs font-bold 
+                 rounded-full w-5 h-5 
+                 flex items-center justify-center"
+              >
+                {cartItems.length}
+              </span>
+            )}
+            <ShoppingCartIcon
+              onClick={handleCheckCart}
+              className="size-8 cursor-pointer"
+            />
+          </div>
 
           <TextAlignJustify
             onClick={openMenu}
-            className="size-8 cursor-pointer md:hidden"
+            className="size-8 cursor-pointer lg:hidden"
           />
         </div>
       </nav>
@@ -157,7 +199,7 @@ const NavBar = ({ search, onSearchChange }) => {
       {/* login */}
       <Signin
         check={checkLogin}
-        checkLogin={successLogin}
+        checkLogin={handleLogin}
         username={email}
         password={password}
         setUsername={setEmail}
@@ -165,9 +207,19 @@ const NavBar = ({ search, onSearchChange }) => {
         handleKeyDown={handleKeyDown}
       />
 
+      {/* cart */}
+      <Cart
+        checkClick={checkCart}
+        data={data}
+        onClose={handleCheckCart}
+        onMinus={onMinus}
+        onPlus={onPlus}
+        onDelete={onDelete}
+        formattedTotal={formattedTotal}
+      />
+
       {/* responsive */}
-      <ResponsiveMenu open={check} />
-      {}
+      <ResponsiveMenu open={checkMobile} openMenu={openMenu} />
     </>
   );
 };
